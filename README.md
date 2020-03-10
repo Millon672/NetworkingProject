@@ -2,11 +2,11 @@
 
 the paramters for the server are entered as follows: 
 
-python script.py <IP> <Port>
+python script.py [IP] [Port]
 
 The parameters for the client are entered as follows:
 
-python script.py <IP> <Port> <Username>
+python script.py [IP] [Port] [Username]
     
 
 SERVER usage example:
