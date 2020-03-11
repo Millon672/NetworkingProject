@@ -41,7 +41,14 @@ while True:
     for socks in read_sockets:
         if socks == server:
             message = socks.recv(2048)
-            print message
+
+            # we have an error with sending the message
+            # server is down
+            if not message:
+                print "Server connection error"
+                signal_handle_CTRL_C(signal.SIGSTOP,None)
+            else:
+                print message
         else:
             message = sys.stdin.readline()
             server.send(message)
