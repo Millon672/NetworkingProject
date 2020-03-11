@@ -2,8 +2,22 @@
 import socket
 import select
 import sys
-  
+import signal
+
+
+def signal_handle_CTRL_C(signum, frame):
+    print ("\nexiting...")
+    server.close()
+    exit()
+
+
+
+
+
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+
+
 if len(sys.argv) != 4:
     print "Correct usage: script, IP address, port number, username"
     exit()
@@ -38,4 +52,7 @@ while True:
             sys.stdout.write("<You>")
             sys.stdout.write(message)
             sys.stdout.flush()
-server.close() 
+
+    # setting the signal handler for SIGINT ^C
+    # view signal_handle_CTRL_C
+    sig = signal.signal(signal.SIGINT, signal_handle_CTRL_C)

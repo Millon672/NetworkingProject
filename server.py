@@ -15,7 +15,7 @@ server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
   
 # checks whether sufficient arguments have been provided
 if len(sys.argv) != 3:
-    print "Correct usage: script.py, IP address, port number, username"
+    print "Correct usage: script.py, IP address, port number"
     exit()
   
 # takes the first argument from command prompt as IP address
@@ -81,7 +81,6 @@ def broadcast(message, connection):
                 clients.send(message)
             except:
                 clients.close()
-  
                 # if the link is broken, we remove the client
                 remove(clients)
   
