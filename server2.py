@@ -2,6 +2,8 @@
 import socket
 import select
 import sys
+import os
+import time
 from _thread import *
   
 """The first argument AF_INET is the address domain of the
@@ -11,7 +13,8 @@ SOCK_STREAM means that data or characters are read in
 a continuous flow."""
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-  
+os.environ['TZ'] = 'US/Eastern'
+time.tzset() 
 # checks whether sufficient arguments have been provided
 if len(sys.argv) != 3:
     print("Correct usage: script.py, IP address, port number, username")
@@ -56,10 +59,9 @@ def clientthread(conn, addr):
                     """prints the message and address of the
                     user who just sent the message on the server
                     terminal"""
-                    print("<" + username + "> " + message) #added option to have a username :D!!
-  
+                    print("<" + username + "> " + message + " " + "(" + time.strftime('%X') + ")") #added option to have a username :D!! 
                     # Calls broadcast function to send message to all
-                    message_to_send = "<" + username + "> " + message
+                    message_to_send = "<" + username + "> " + message 
                     broadcast(message_to_send, conn)
   
                 else:
