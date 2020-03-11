@@ -19,9 +19,13 @@ python client.py 127.0.0.1 8081 Breadman
 
 Checklist:
 [X] Simple Chatroom
+
 [] Fix time, maybe add to client?
+
 [] GUI
+
 [] Voice messeges?
+
 [] others..
 
 # NetworkingProject
