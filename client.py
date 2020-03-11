@@ -11,7 +11,11 @@ def signal_handle_CTRL_C(signum, frame):
     exit()
 
 
-
+def signal_handle_server_close():
+    print ("\nServer connection error")
+    print ("\nexiting...")
+    server.close()
+    exit()
 
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -45,8 +49,7 @@ while True:
             # we have an error with sending the message
             # server is down
             if not message:
-                print "Server connection error"
-                signal_handle_CTRL_C(signal.SIGSTOP,None)
+                signal_handle_server_close()
             else:
                 print message
         else:
