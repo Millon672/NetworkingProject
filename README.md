@@ -21,7 +21,7 @@ Checklist:
 
 [X] Simple Chatroom
 
-[] Fix time, maybe add to client?
+[X] Fix time, maybe add to client?
 
 [] GUI
 
