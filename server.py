@@ -16,10 +16,6 @@ def signal_handle_CTRL_C(signum, frame):
 
     exit()
 
-
-
-
-
 """The first argument AF_INET is the address domain of the
 socket. This is used when we have an Internet Domain with
 any two hosts The second argument is the type of socket.

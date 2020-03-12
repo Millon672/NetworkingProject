@@ -2,6 +2,8 @@
 import socket
 import select
 import sys
+import os
+import time
 import signal
 
 
@@ -19,8 +21,8 @@ def signal_handle_server_close():
 
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-
+os.environ['TZ'] = 'US/Eastern'
+time.tzset()
 
 if len(sys.argv) != 4:
     print "Correct usage: script, IP address, port number, username"
@@ -55,7 +57,8 @@ while True:
         else:
             message = sys.stdin.readline()
             server.send(message)
-            sys.stdout.write("<You>")
+            sys.stdout.write("(" + time.strftime('%X') + ") ")
+            sys.stdout.write("<You> ")
             sys.stdout.write(message)
             sys.stdout.flush()
 
