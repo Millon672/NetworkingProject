@@ -72,7 +72,7 @@ def clientthread(conn, addr):
                     #print("<" + username + "> " + message.replace("\n", "") + " " + "(" + time.strftime('%X') + ")") #added option to have a username :D!!
                     print("(" + time.strftime('%X') + ") " + "<" + username + "> " + message.replace("\n",""))
                     # Calls broadcast function to send message to all
-                    message_to_send = "(" + time.strftime('%X') + ")" + "<" + username + "> " + message
+                    message_to_send = "(" + time.strftime('%X') + ") " + "<" + username + "> " + message
                     broadcast(message_to_send, conn)
 
                 else:
