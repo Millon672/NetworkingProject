@@ -73,10 +73,10 @@ def clientthread(conn, addr):
                     """prints the message and address of the
                     user who just sent the message on the server
                     terminal"""
-                    print("<" + username + "> " + message.replace("\n", "") + " " + "(" + time.strftime('%X') + ")") #added option to have a username :D!!
-
+                    #print("<" + username + "> " + message.replace("\n", "") + " " + "(" + time.strftime('%X') + ")") #added option to have a username :D!!
+                    print("(" + time.strftime('%X') + ") " + "<" + username + "> " + message.replace("\n",""))
                     # Calls broadcast function to send message to all
-                    message_to_send = "<" + username + "> " + message
+                    message_to_send = "(" + time.strftime('%X') + ")" + "<" + username + "> " + message
                     broadcast(message_to_send, conn)
 
                 else:
