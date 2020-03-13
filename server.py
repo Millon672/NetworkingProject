@@ -50,7 +50,7 @@ increased as per convenience.
 """
 server.listen(100)
 
-list_of_clients = []
+list_of_clients = set()
 
 def clientthread(conn, addr):
 
@@ -101,7 +101,7 @@ from the list that was created at the beginning of
 the program"""
 def remove(connection):
     if connection in list_of_clients:
-        list_of_clients.remove(connection)
+        list_of_clients.pop(connection)
 
 while True:
     # if the program stops terminate all child processes
@@ -114,7 +114,7 @@ while True:
 
     """Maintains a list of clients for ease of broadcasting
     a message to all available people in the chatroom"""
-    list_of_clients.append(conn)
+    list_of_clients.add(conn)
 
     # prints the address of the user that just connected
 
