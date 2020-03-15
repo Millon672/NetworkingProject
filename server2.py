@@ -5,7 +5,17 @@ import sys
 import os
 import time
 from _thread import *
-  
+import signal
+
+def signal_handle_CTRL_C(signum, frame):
+    print ("\nClosing Server...")
+    server.close()
+    for client in list_of_clients:
+        client.close()
+
+    exit()
+
+
 """The first argument AF_INET is the address domain of the
 socket. This is used when we have an Internet Domain with
 any two hosts The second argument is the type of socket.
@@ -94,7 +104,8 @@ def remove(connection):
         list_of_clients.remove(connection)
   
 while True:
-  
+    # if the program stops terminate all child processes
+    signal.signal(signal.SIGINT, signal_handle_CTRL_C)
     """Accepts a connection request and stores two parameters, 
     conn which is a socket object for that user, and addr 
     which contains the IP address of the client that just 
